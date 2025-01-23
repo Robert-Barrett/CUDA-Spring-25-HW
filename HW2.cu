@@ -1,4 +1,4 @@
-// Name:
+// Name: Robert Barrett 
 // nvcc HW2.cu -o temp
 /*
  What to do:
@@ -60,7 +60,7 @@
 #include <stdio.h>
 
 // Defines
-#define N 500 // Length of the vector
+#define N 1500 // Length of the vector
 
 // Global variables
 float *A_CPU, *B_CPU, *C_CPU; //CPU pointers
