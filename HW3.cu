@@ -1,4 +1,4 @@
-// Name:
+// Name: Robert Barrett
 // nvcc HW3.cu -o temp
 /*
  What to do:
@@ -40,11 +40,11 @@ void cleanUp();
 // This will be the layout of the parallel space we will be using.
 void setUpDevices()
 {
-	BlockSize.x = 100;
+	BlockSize.x = 256;
 	BlockSize.y = 1;
 	BlockSize.z = 1;
 	
-	GridSize.x = 1;
+	GridSize.x = (N + BlockSize.x - 1) / BlockSize.x;
 	GridSize.y = 1;
 	GridSize.z = 1;
 }
@@ -87,12 +87,12 @@ void addVectorsCPU(float *a, float *b, float *c, int n)
 // It adds vectors a and b on the GPU then stores result in vector c.
 __global__ void addVectorsGPU(float *a, float *b, float *c, int n)
 {
-	int id = threadIdx.x;
+	int id = blockIdx.x * blockDimx.x + threadIdx.x;
 	
-	while(id < n)
+	if(id < n)
 	{
 		c[id] = a[id] + b[id];
-		id += blockDim.x;
+
 	}
 }
 
