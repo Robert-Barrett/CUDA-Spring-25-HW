@@ -1,4 +1,4 @@
-// Name:
+// Name: Robert Barrett
 // nvcc HW1.cu -o temp
 /*
  What to do:
